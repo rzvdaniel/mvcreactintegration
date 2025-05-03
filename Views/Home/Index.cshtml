@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    // Inject IWebHostEnvironment to check the environment
+    @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to MVC</h1>
+    <p>This is the standard MVC View content.</p>
+    
+    <div class="mb-4">
+        <p>Navigate to React routes:</p>
+        <a href="#/" class="btn btn-primary me-2">React Home</a>
+        <a href="#/about" class="btn btn-secondary">React About</a>
+    </div>
+</div>
+
+<hr />
+
+<div id="react-app-root">
+    Loading React App...
+</div>
+
+<hr />
+
+@if (Env.IsDevelopment())
+{
+    <script type="module">
+        // Needed for HMR
+        import RefreshRuntime from 'http://localhost:5173/@@react-refresh'
+        RefreshRuntime.injectIntoGlobalHook(window)
+        window.$RefreshReg$ = () => {}
+        window.$RefreshSig$ = () => (type) => type
+        window.__vite_plugin_react_preamble_installed__ = true
+    </script>
+    <script type="module" src="http://localhost:5173/@@vite/client"></script>
+    <script type="module" src="http://localhost:5173/src/main.jsx"></script>
+}
+else
+{
+    <link rel="stylesheet" asp-append-version="true" href="~/react-app/assets/index-*.css" />
+    <script type="module" asp-append-version="true" src="~/react-app/assets/index-*.js"></script>
+}
