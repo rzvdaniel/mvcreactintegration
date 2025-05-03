@@ -14,16 +14,17 @@ cd MvcReactSimple
 ## 2. Create React App with Vite
 ### Create React app using Vite in a ClientApp subdirectory
 
-``
+```
 npm create vite@latest ClientApp -- --template react
 cd ClientApp
 npm install
 npm install react-router-dom
 cd ..
-``
+```
 
 ## 3. Configure Vite
-``import { defineConfig } from 'vite'
+```
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 export default defineConfig(({ command, mode }) => {
@@ -44,11 +45,13 @@ export default defineConfig(({ command, mode }) => {
       sourcemap: true,
     }
   }
-})``
+})
+```
 
 ## 4. Configure React App with Routing
 main.jsx
-``import React from 'react'
+```
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
@@ -61,10 +64,12 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './components/Home'
 import About from './components/About'
-import './App.css'``
+import './App.css'
+```
 
 
-``function App() {
+```
+function App() {
   // Determine if we're in development or production to set correct base URL
   const baseUrl = import.meta.env.PROD ? '/react-app' : '';
   return (
@@ -84,11 +89,13 @@ import './App.css'``
     </BrowserRouter>
   )
 }
-export default App``
+export default App
+```
 
 ## 5. Create React Components
 
-``import React, { useState } from 'react'
+```
+import React, { useState } from 'react'
 function Home() {
   const [count, setCount] = useState(0)
   return (
@@ -125,11 +132,13 @@ namespace MvcReactSimple.Controllers
             return View();
         }
     }
-}``
+}
+```
 
 ## 7. Create MVC View
 
-``@{
+```
+@{
     ViewData["Title"] = "React App";
     Layout = "_Layout";
 }
@@ -147,11 +156,13 @@ namespace MvcReactSimple.Controllers
         <!-- Production: Load built assets -->
         <script type="module" src="@Url.Content("~/react-app/assets/index.js")"></script>
     }
-}``
+}
+```
 
 ## 8. Configure ASP.NET Core App
 
-``using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+```
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllersWithViews();
@@ -188,13 +199,15 @@ app.MapWhen(
         });
     }
 );
-app.Run();``
+app.Run();
+```
 
 ## 9. Set Up VS Code Debugging
 
 Create a .vscode/launch.json file:
 
-``{
+```
+{
   "version": "0.2.0",
   "configurations": [
     {
@@ -234,34 +247,42 @@ Create a .vscode/launch.json file:
       "configurations": [".NET Core Launch (web)", "React: Launch Chrome"]
     }
   ]
-}``
+}
+```
 
 ## 10. Development Workflow
 
 Start the React dev server (with hot reload):
-``cd ClientApp
-npm run dev``
+```
+cd ClientApp
+npm run dev
+```
 Start the .NET application (in another terminal):
 ``dotnet run``
+
 Access the application:
 MVC app: http://localhost:5000
 React dev server: http://localhost:5173
+
 Debug React:
 Open VS Code
 Set breakpoints in React components
 Press F5 and select "React: Launch Chrome" configuration
-11. Production Build
-# Build React app
+
+## 11. Production Build
+### Build React app
 ``cd ClientApp``
 npm run build
-# Build and run .NET app
-``cd ..
+### Build and run .NET app
+```
+cd ..
 dotnet publish
-dotnet run --environment Production``
+dotnet run --environment Production
+```
 
 This setup gives you:
-Clear separation between React and MVC
-Hot module reload during development
-Integrated debugging in VS Code
-React routing that works in both dev and production
-Optimized production builds
+* Clear separation between React and MVC
+* Hot module reload during development
+* Integrated debugging in VS Code
+* React routing that works in both dev and production
+* Optimized production builds
