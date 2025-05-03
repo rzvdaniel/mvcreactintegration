@@ -118,11 +118,13 @@ function About() {
     </div>
   )
 }
-export default About``
+export default About
+```
 
 ## 6. Create MVC Controller
 
-``using Microsoft.AspNetCore.Mvc;
+```
+using Microsoft.AspNetCore.Mvc;
 namespace MvcReactSimple.Controllers
 {
     public class ReactController : Controller
