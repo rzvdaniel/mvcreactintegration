@@ -6,10 +6,10 @@ Simplest possible example of Embedding React in .NET MVC with Hot Reload & Debug
 
 ### Create a new MVC project
 
-``
+```
 dotnet new mvc -n MvcReactSimple
 cd MvcReactSimple
-``
+```
 
 ## 2. Create React App with Vite
 ### Create React app using Vite in a ClientApp subdirectory
